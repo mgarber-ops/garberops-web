@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Migrating Legacy Infrastructure to AWS: A Real-World Case Study - GarberOps</title>
+    <meta name="description" content="How we helped a financial services company migrate their on-premises infrastructure to AWS, reducing costs by 40% while improving reliability and scalability.">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../blog.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .post-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.8;
+        }
+        
+        .post-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .post-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1rem 0;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        .post-tags {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .post-body {
+            font-size: 1.1rem;
+            color: #374151;
+        }
+        
+        .post-body h2 {
+            color: #1f2937;
+            margin: 2.5rem 0 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .post-body h3 {
+            color: #1f2937;
+            margin: 2rem 0 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .post-body p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .post-body ul, .post-body ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+        
+        .post-body li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .code-block {
+            background: #1f2937;
+            color: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .back-to-blog:hover {
+            color: #1d4ed8;
+        }
+        
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+        }
+        
+        .share-btn {
+            background: #f1f5f9;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #475569;
+        }
+        
+        .share-btn:hover {
+            background: #2563eb;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>GarberOps</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="../index.html#services" class="nav-link">Services</a></li>
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../blog.html" class="nav-link active">Blog</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Post Content -->
+    <div class="post-content">
+        <a href="../blog.html" class="back-to-blog">
+            <i class="fas fa-arrow-left"></i>
+            Back to Blog
+        </a>
+        
+        <article>
+            <header class="post-header">
+                <h1>Migrating Legacy Infrastructure to AWS: A Real-World Case Study</h1>
+                <div class="post-meta">
+                    <span><i class="fas fa-calendar"></i> March 15, 2024</span>
+                    <span><i class="fas fa-clock"></i> 8 min read</span>
+                    <span><i class="fas fa-user"></i> By GarberOps Team</span>
+                </div>
+                <div class="post-tags">
+                    <span class="tag">Terraform</span>
+                    <span class="tag">ECS</span>
+                    <span class="tag">RDS</span>
+                    <span class="tag">Migration</span>
+                    <span class="tag">AWS</span>
+                </div>
+            </header>
+
+            <div class="post-body">
+                <p>In today's rapidly evolving technology landscape, many organizations are facing the challenge of modernizing their legacy infrastructure. This case study explores how we helped a mid-sized financial services company successfully migrate their on-premises infrastructure to AWS, achieving significant cost savings and operational improvements.</p>
+
+                <h2>The Challenge</h2>
+                <p>Our client, a financial services company with 200+ employees, was running their entire infrastructure on-premises with aging hardware and limited scalability. Their challenges included:</p>
+                <ul>
+                    <li>High maintenance costs for aging hardware</li>
+                    <li>Limited disaster recovery capabilities</li>
+                    <li>Difficulty scaling during peak periods</li>
+                    <li>Security compliance concerns</li>
+                    <li>Manual deployment processes</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <strong>Key Metrics:</strong> The client was spending approximately $50,000 monthly on infrastructure maintenance, with 99.5% uptime and manual deployment processes taking 4-6 hours per release.
+                </div>
+
+                <h2>Our Approach</h2>
+                <p>We developed a comprehensive migration strategy using AWS best practices and modern DevOps methodologies. Our approach consisted of three main phases:</p>
+
+                <h3>Phase 1: Assessment and Planning</h3>
+                <p>We began with a thorough assessment of the existing infrastructure, including:</p>
+                <ul>
+                    <li>Infrastructure discovery and documentation</li>
+                    <li>Application dependency mapping</li>
+                    <li>Performance baseline establishment</li>
+                    <li>Security and compliance requirements analysis</li>
+                    <li>Cost optimization planning</li>
+                </ul>
+
+                <h3>Phase 2: Infrastructure as Code Implementation</h3>
+                <p>We implemented Infrastructure as Code using Terraform to ensure consistency and reproducibility:</p>
+
+                <div class="code-block">
+# Example Terraform configuration for ECS cluster
+resource "aws_ecs_cluster" "main" {
+  name = "production-cluster"
+  
+  setting {
+    name  = "containerInsights"
+    value = "enabled"
+  }
+  
+  tags = {
+    Environment = "production"
+    Project     = "migration"
+  }
+}
+
+resource "aws_ecs_service" "app" {
+  name            = "web-app"
+  cluster         = aws_ecs_cluster.main.id
+  task_definition = aws_ecs_task_definition.app.arn
+  desired_count   = 3
+  
+  network_configuration {
+    subnets         = var.private_subnets
+    security_groups = [aws_security_group.ecs.id]
+  }
+}
+                </div>
+
+                <h3>Phase 3: Migration and Optimization</h3>
+                <p>The migration was executed using a blue-green deployment strategy to minimize downtime:</p>
+                <ol>
+                    <li>Database migration using AWS Database Migration Service</li>
+                    <li>Application deployment to ECS with load balancer</li>
+                    <li>DNS cutover with Route 53</li>
+                    <li>Performance monitoring and optimization</li>
+                </ol>
+
+                <h2>Technical Architecture</h2>
+                <p>We designed a modern, scalable architecture using AWS services:</p>
+                <ul>
+                    <li><strong>Compute:</strong> Amazon ECS with Fargate for containerized applications</li>
+                    <li><strong>Database:</strong> Amazon RDS with Multi-AZ deployment</li>
+                    <li><strong>Storage:</strong> Amazon S3 for static assets and backups</li>
+                    <li><strong>Networking:</strong> VPC with private subnets and NAT gateways</li>
+                    <li><strong>Security:</strong> AWS WAF, Security Groups, and IAM roles</li>
+                    <li><strong>Monitoring:</strong> CloudWatch, X-Ray, and custom dashboards</li>
+                </ul>
+
+                <h2>Results and Impact</h2>
+                <p>The migration was completed successfully with minimal downtime (less than 30 minutes). Here are the key results:</p>
+
+                <div class="highlight-box">
+                    <strong>Cost Reduction:</strong> 40% reduction in infrastructure costs, from $50,000 to $30,000 monthly<br>
+                    <strong>Performance:</strong> 99.9% uptime achieved<br>
+                    <strong>Deployment Time:</strong> Reduced from 4-6 hours to 15 minutes<br>
+                    <strong>Scalability:</strong> Auto-scaling handles 3x traffic spikes automatically
+                </div>
+
+                <h2>Lessons Learned</h2>
+                <p>Throughout this migration, we learned several valuable lessons:</p>
+                <ul>
+                    <li><strong>Planning is crucial:</strong> Thorough assessment and planning saved significant time during execution</li>
+                    <li><strong>Automation pays off:</strong> Infrastructure as Code reduced deployment errors by 90%</li>
+                    <li><strong>Security first:</strong> Implementing security controls early prevented rework</li>
+                    <li><strong>Monitoring is essential:</strong> Comprehensive monitoring helped identify and resolve issues quickly</li>
+                </ul>
+
+                <h2>Next Steps</h2>
+                <p>Following the successful migration, we're working with the client on additional optimizations:</p>
+                <ul>
+                    <li>Implementing serverless functions for specific workloads</li>
+                    <li>Adding advanced monitoring and alerting</li>
+                    <li>Optimizing database performance</li>
+                    <li>Implementing automated backup and disaster recovery</li>
+                </ul>
+
+                <h2>Conclusion</h2>
+                <p>This migration demonstrates the power of modern cloud infrastructure when implemented with proper planning and execution. The combination of AWS services, Infrastructure as Code, and DevOps practices resulted in significant improvements in cost, performance, and operational efficiency.</p>
+
+                <p>If you're considering a similar migration or have questions about modernizing your infrastructure, we'd love to discuss how we can help you achieve similar results.</p>
+            </div>
+
+            <div class="share-buttons">
+                <button class="share-btn share-btn" onclick="sharePost()">
+                    <i class="fas fa-share"></i>
+                    Share
+                </button>
+                <button class="share-btn" onclick="copyLink()">
+                    <i class="fas fa-link"></i>
+                    Copy Link
+                </button>
+            </div>
+        </article>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>GarberOps</h3>
+                    <p>Professional cloud consulting services for modern businesses.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="../index.html#services">Cloud Infrastructure</a></li>
+                        <li><a href="../index.html#services">DevOps & Automation</a></li>
+                        <li><a href="../index.html#services">Security & Compliance</a></li>
+                        <li><a href="../index.html#services">Performance Optimization</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>contact@garberops.com</li>
+                        <li>+1 (555) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 GarberOps. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // Share functionality
+        function sharePost() {
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    url: window.location.href
+                });
+            } else {
+                copyLink();
+            }
+        }
+
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                showNotification('Link copied to clipboard!', 'success');
+            });
+        }
+
+        // Reading progress
+        const progressBar = document.createElement('div');
+        progressBar.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            z-index: 10001;
+            transition: width 0.1s ease;
+        `;
+        document.body.appendChild(progressBar);
+
+        window.addEventListener('scroll', () => {
+            const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            progressBar.style.width = scrolled + '%';
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - GarberOps | Cloud Consulting Insights</title>
+    <meta name="description" content="Insights, experiences, and technical articles from GarberOps cloud consulting projects. Learn about DevOps, security, and cloud infrastructure best practices.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="blog.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>GarberOps</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#services" class="nav-link">Services</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <section class="blog-header">
+        <div class="container">
+            <div class="blog-header-content">
+                <h1>GarberOps Blog</h1>
+                <p>Insights, experiences, and technical deep-dives from our cloud consulting projects</p>
+                <div class="blog-stats">
+                    <div class="stat">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Articles</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Years</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Categories -->
+    <section class="blog-categories">
+        <div class="container">
+            <div class="category-filters">
+                <button class="category-btn active" data-category="all">All Posts</button>
+                <button class="category-btn" data-category="devops">DevOps</button>
+                <button class="category-btn" data-category="security">Security</button>
+                <button class="category-btn" data-category="aws">AWS</button>
+                <button class="category-btn" data-category="automation">Automation</button>
+                <button class="category-btn" data-category="case-studies">Case Studies</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Posts -->
+    <section class="blog-posts">
+        <div class="container">
+            <div class="posts-grid" id="postsGrid">
+                <!-- Featured Post -->
+                <article class="post-card featured" data-categories="devops,aws,case-studies">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=400&fit=crop" alt="AWS Infrastructure">
+                        <div class="post-categories">
+                            <span class="category">DevOps</span>
+                            <span class="category">AWS</span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-date">March 15, 2024</span>
+                            <span class="read-time">8 min read</span>
+                        </div>
+                        <h2><a href="posts/migrating-legacy-infrastructure-to-aws.html">Migrating Legacy Infrastructure to AWS: A Real-World Case Study</a></h2>
+                        <p>How we helped a financial services company migrate their on-premises infrastructure to AWS, reducing costs by 40% while improving reliability and scalability.</p>
+                        <div class="post-tags">
+                            <span class="tag">Terraform</span>
+                            <span class="tag">ECS</span>
+                            <span class="tag">RDS</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Regular Posts -->
+                <article class="post-card" data-categories="security,automation">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=250&fit=crop" alt="Security Automation">
+                        <div class="post-categories">
+                            <span class="category">Security</span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-date">March 10, 2024</span>
+                            <span class="read-time">6 min read</span>
+                        </div>
+                        <h3><a href="posts/automating-security-compliance-with-terraform.html">Automating Security Compliance with Terraform</a></h3>
+                        <p>Building a comprehensive security framework using Infrastructure as Code to ensure consistent compliance across multiple environments.</p>
+                        <div class="post-tags">
+                            <span class="tag">Terraform</span>
+                            <span class="tag">Security</span>
+                            <span class="tag">Compliance</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="post-card" data-categories="devops,automation">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=250&fit=crop" alt="CI/CD Pipeline">
+                        <div class="post-categories">
+                            <span class="category">DevOps</span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-date">March 5, 2024</span>
+                            <span class="read-time">5 min read</span>
+                        </div>
+                        <h3><a href="posts/building-robust-ci-cd-pipelines.html">Building Robust CI/CD Pipelines with GitHub Actions</a></h3>
+                        <p>Creating reliable deployment pipelines that catch issues early and ensure smooth releases to production environments.</p>
+                        <div class="post-tags">
+                            <span class="tag">GitHub Actions</span>
+                            <span class="tag">CI/CD</span>
+                            <span class="tag">Docker</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="post-card" data-categories="aws,automation">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop" alt="AWS Lambda">
+                        <div class="post-categories">
+                            <span class="category">AWS</span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-date">February 28, 2024</span>
+                            <span class="read-time">7 min read</span>
+                        </div>
+                        <h3><a href="posts/serverless-architecture-best-practices.html">Serverless Architecture Best Practices</a></h3>
+                        <p>Lessons learned from building scalable serverless applications on AWS Lambda, including cost optimization and performance tuning.</p>
+                        <div class="post-tags">
+                            <span class="tag">Lambda</span>
+                            <span class="tag">Serverless</span>
+                            <span class="tag">API Gateway</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="post-card" data-categories="security,case-studies">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=250&fit=crop" alt="Security Audit">
+                        <div class="post-categories">
+                            <span class="category">Security</span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-date">February 20, 2024</span>
+                            <span class="read-time">10 min read</span>
+                        </div>
+                        <h3><a href="posts/securing-kubernetes-clusters-in-production.html">Securing Kubernetes Clusters in Production</a></h3>
+                        <p>A comprehensive guide to implementing security best practices for Kubernetes clusters, including RBAC, network policies, and runtime security.</p>
+                        <div class="post-tags">
+                            <span class="tag">Kubernetes</span>
+                            <span class="tag">Security</span>
+                            <span class="tag">RBAC</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="post-card" data-categories="devops,automation">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=400&h=250&fit=crop" alt="Monitoring">
+                        <div class="post-categories">
+                            <span class="category">DevOps</span>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-date">February 15, 2024</span>
+                            <span class="read-time">6 min read</span>
+                        </div>
+                        <h3><a href="posts/implementing-effective-monitoring-strategies.html">Implementing Effective Monitoring Strategies</a></h3>
+                        <p>Setting up comprehensive monitoring and alerting systems using Prometheus, Grafana, and AWS CloudWatch for better observability.</p>
+                        <div class="post-tags">
+                            <span class="tag">Prometheus</span>
+                            <span class="tag">Grafana</span>
+                            <span class="tag">Monitoring</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="load-more-container">
+                <button class="btn btn-secondary" id="loadMoreBtn">Load More Posts</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Updated</h2>
+                <p>Get the latest insights on cloud infrastructure, DevOps, and security delivered to your inbox.</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>GarberOps</h3>
+                    <p>Professional cloud consulting services for modern businesses.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="index.html#services">Cloud Infrastructure</a></li>
+                        <li><a href="index.html#services">DevOps & Automation</a></li>
+                        <li><a href="index.html#services">Security & Compliance</a></li>
+                        <li><a href="index.html#services">Performance Optimization</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>contact@garberops.com</li>
+                        <li>+1 (555) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 GarberOps. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="blog.js"></script>
+</body>
+</html> 
